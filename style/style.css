@@ -1,0 +1,50 @@
+html {
+	font-size: 62.5%
+}
+body {
+	/*font-size: 62.5%;*/
+	font-size: 1rem;
+	font-family: 微软雅黑, 华文细黑;
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+span,
+p,
+li,
+ul,
+ol {
+	margin: 0;
+	padding: 0;
+}
+
+.clearfix:after {
+	content: "";
+	display: none;
+	clear: both;
+}
+/*header */
+.header {
+	overflow: hidden;
+	text-align: center;
+	height: 160px;
+	box-sizing: border-box;
+	
+}
+.drawer-btn {
+	float: left;
+	margin-left: 1rem;
+	margin-left: 10px;
+}
+.search-city {
+	display: inline-block;
+	font-size: 5rem
+}
+.more-btn {
+	float: right;
+}
