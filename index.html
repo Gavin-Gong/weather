@@ -11,14 +11,25 @@
 	<div id="container">
 		<div class="header clearfix">
 			<i class="drawer-btn material-icons">menu</i>
-			<h3 class="search-city">北京</h3>
+			<input type="text" class="search-bar" value="北京"><br>
 			<i class="more-btn material-icons">more_vert</i>
 		</div>
 		<div class="content">
-			<h1 class="temperature">30F</h1>
-			<span class="aqi">空气良 54</span>
+			<h1 class="temperature">30&#8451;</h1>
+			<h3 class="weather">多云</h3>
+			<h3 class="air">空气良 54</h3>
+			<div class="daily-forecast">
+				<canvas id="templine">
+					<p>Your Broswer don't support canvas</p>
+				</canvas>
+			</div>
+			<div class="hourly-forecast"></div>
+			<div class="aqi"></div>
+			<div class="sun"></div>
+			<div class="suggestion"></div>
 		</div>
 	</div>
 	<script src="js/jquery-3.0.0.min.js"></script>
+	<script src="js/script.js"></script>
 </body>
 </html>

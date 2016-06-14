@@ -5,7 +5,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-size: 1rem;
-	font-family: 华文细黑,微软雅黑;
+	font-family: relaway, 华文细黑,微软雅黑;
 	color: #fff;
 	background: #333;
 }
@@ -73,12 +73,18 @@ font-feature-settings: 'liga';
 }
 /*header */
 .header {
+	position: fixed;
+	top: 0;
 	overflow: hidden;
+	width: 100vw;
+	/*height: 100vh;*/
 	/*height: 4rem;*/
+	vertical-align: middle;
 	padding-top: .8rem;
 	padding-bottom: .8rem;
 	box-sizing: border-box;
 	text-align: center;
+	font-size: 0;
 	color: #fff;
 	background: #f44336;
 	
@@ -87,16 +93,33 @@ font-feature-settings: 'liga';
 	float: left;
 	margin-left: 2rem;
 	margin-left: 20px;
+	font-size: 3rem
 }
-.search-city {
+.search-bar {
+	position: absolute;
+	top: 50%;
+	left: 50%;
 	display: inline-block;
-	font-size: 2.2rem;
-	font-weight: normal;
+	padding: .5rem 1rem;
+	text-align: center;
+	border: none;
+	outline: none;
+	font-size: 2rem;
+	border-radius: 2rem;
+	background: #eee;
+	opacity: .4;
+	transform: translate(-50%, -50%);
+}
+.search-bar:focus {
+	text-align: left;
+	outline: none;
+	opacity: 1
 }
 .more-btn {
 	float: right;
 	margin-right: 2rem;
 	margin-right: 20px;
+	font-size: 3rem
 }
 
 
@@ -104,4 +127,20 @@ font-feature-settings: 'liga';
 .content {
 	text-align: center;
 	background: #333;
+}
+.temperature {
+	margin-top: 8rem; 
+	font-weight: normal;
+	font-size: 8rem;
+}
+.weather {
+	margin-top: 4rem;
+	font-size: 2rem
+}
+.air {
+	display: inline-block;
+	padding: 1rem 2rem;
+	margin-top: 3rem;
+	border-radius: 2rem;
+	background-color: rgba(255, 255, 255, .3);
 }
