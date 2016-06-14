@@ -7,7 +7,7 @@ body {
 	font-family: 微软雅黑, 华文细黑;
 }
 
-
+/*CSS reset*/
 h1,
 h2,
 h3,
@@ -23,6 +23,45 @@ ol {
 	padding: 0;
 }
 
+/*Maetrial Icon*/
+@font-face {
+font-family: 'Material Icons';
+font-style: normal;
+font-weight: 400;
+src: url(../font/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+src: local('Material Icons'),
+local('MaterialIcons-Regular'),
+url(../font/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+url(../font/iconfont/MaterialIcons-Regular.woff) format('woff'),
+url(../font/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.material-icons {
+font-family: 'Material Icons';
+font-weight: normal;
+font-style: normal;
+font-size: 24px; /* Preferred icon size */
+display: inline-block;
+width: 1em;
+height: 1em;
+line-height: 1;
+text-transform: none;
+-webkit-user-select: none;
+user-select: none;
+
+/* Support for all WebKit browsers. */
+-webkit-font-smoothing: antialiased;
+/* Support for Safari and Chrome. */
+text-rendering: optimizeLegibility;
+
+/* Support for Firefox. */
+-moz-osx-font-smoothing: grayscale;
+
+/* Support for IE. */
+font-feature-settings: 'liga';
+}
+ /*END Material Icon*/
+
 .clearfix:after {
 	content: "";
 	display: none;
@@ -31,9 +70,11 @@ ol {
 /*header */
 .header {
 	overflow: hidden;
-	text-align: center;
-	height: 160px;
+	height: 6rem;
 	box-sizing: border-box;
+	text-align: center;
+	color: #fff;
+	background: #f44336;
 	
 }
 .drawer-btn {
@@ -43,7 +84,8 @@ ol {
 }
 .search-city {
 	display: inline-block;
-	font-size: 5rem
+	font-size: 2.2rem;
+	font-weight: normal;
 }
 .more-btn {
 	float: right;
