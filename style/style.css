@@ -2,9 +2,12 @@ html {
 	font-size: 62.5%
 }
 body {
-	/*font-size: 62.5%;*/
+	margin: 0;
+	padding: 0;
 	font-size: 1rem;
-	font-family: 微软雅黑, 华文细黑;
+	font-family: 华文细黑,微软雅黑;
+	color: #fff;
+	background: #333;
 }
 
 /*CSS reset*/
@@ -21,6 +24,7 @@ ul,
 ol {
 	margin: 0;
 	padding: 0;
+	font-weight: normal;
 }
 
 /*Maetrial Icon*/
@@ -70,7 +74,9 @@ font-feature-settings: 'liga';
 /*header */
 .header {
 	overflow: hidden;
-	height: 6rem;
+	/*height: 4rem;*/
+	padding-top: .8rem;
+	padding-bottom: .8rem;
 	box-sizing: border-box;
 	text-align: center;
 	color: #fff;
@@ -79,8 +85,8 @@ font-feature-settings: 'liga';
 }
 .drawer-btn {
 	float: left;
-	margin-left: 1rem;
-	margin-left: 10px;
+	margin-left: 2rem;
+	margin-left: 20px;
 }
 .search-city {
 	display: inline-block;
@@ -89,4 +95,13 @@ font-feature-settings: 'liga';
 }
 .more-btn {
 	float: right;
+	margin-right: 2rem;
+	margin-right: 20px;
+}
+
+
+/*Content*/
+.content {
+	text-align: center;
+	background: #333;
 }
