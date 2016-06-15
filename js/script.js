@@ -47,8 +47,10 @@ Data.maxTempList = [23, 45, 12, 35, 29, 33, 8]
 Data.minTempList = [29, 35, 22, 15, 29, 23, 18]
 Data.dayWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
 Data.nightWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
+Data.WeekList = ['周日','周一', '周二', '周三', '周四', '周五', '周六']
 console.log(Data)
-
+convertWeekList(Data.WeekList)
+console.log(Data.WeekList)
 // canvas
 // $(document).ajaxSuccess(function() {
 // tempertature line
@@ -77,6 +79,10 @@ if (templine.getContext) {
     ctx.beginPath()
     drawUnderDots (intervalWidth, Data.minTempList)
     ctx.fill()
+
+    ctx.beginPath()
+    drawWeatherText (intervalWidth, Data.dayWeatherList, Data.WeekList)
+    // ctx.fill()
         // ctx.closePath()
 }
 
@@ -124,9 +130,32 @@ function drawUnderDots (width, data) {
 		temp+= width
 	}
 }
+
+function drawWeatherText (width, dataWeather, dataWeek) {
+	var temp = 40
+	ctx.fillStyle = '#fff'
+    ctx.font = '16px 华文细黑'
+    ctx.textAlign = "center"
+	for(var d=0; d<dataWeather.length; d++) {
+		// ctx.moveTo(temp, 350)
+		ctx.fillText(dataWeather[d], temp, 300)
+		ctx.fillText(dataWeek[d], temp, 330)
+		temp+=width
+	}
+	
+}
+
+function convertWeekList(weeklist) {
+	var date = new Date()
+	var nowWeek = date.getDay()
+	var arr_1 = weeklist.slice(0,nowWeek)
+	var arr_2 = weeklist.slice(nowWeek)
+	Data.WeekList = arr_2.concat(arr_1) 
+}
+
 // })
 
 // disable right-click menu
-$(document).bind('contextmenu', function() {
-    return false
-})
+// $(document).bind('contextmenu', function() {
+//     return false
+// })
