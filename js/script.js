@@ -70,6 +70,7 @@ if (templine.getContext) {
     var ctx = templine.getContext('2d')
     console.log(ctx)
     ctx.strokeStyle = '#eee'
+    ctx.lineWidth = 2
     drawUpperLine(intervalWidth, Data.maxTempList)
 
     drawUnderLine(intervalWidth, Data.minTempList)
