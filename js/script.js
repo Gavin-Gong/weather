@@ -1,7 +1,7 @@
 // get and store data by ajax
 var Data = {}
 var apiURL = 'http://apis.baidu.com/heweather/weather/free?city='
-$('.search-bar').bind('focus', function() {
+$('.search-bar').bind('change', function() {
     $.ajax({
         type: "GET",
         dataType: 'json',
@@ -41,7 +41,7 @@ $('.search-bar').bind('focus', function() {
         }
     })
 })
-$('.search-bar').trigger('focus')
+// $('.search-bar').trigger('focus')
     // 
 // Data.maxTempList = [23, 45, 12, 35, 29, 33, 8]
 // Data.minTempList = [29, 35, 22, 15, 29, 23, 18]
