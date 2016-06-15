@@ -43,16 +43,23 @@ $('.search-bar').bind('focus', function() {
 })
 $('.search-bar').trigger('focus')
     // 
-Data.maxTempList = [23, 45, 12, 35, 29, 33, 8]
-Data.minTempList = [29, 35, 22, 15, 29, 23, 18]
-Data.dayWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
-Data.nightWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
-Data.WeekList = ['周日','周一', '周二', '周三', '周四', '周五', '周六']
-console.log(Data)
-convertWeekList(Data.WeekList)
-console.log(Data.WeekList)
+// Data.maxTempList = [23, 45, 12, 35, 29, 33, 8]
+// Data.minTempList = [29, 35, 22, 15, 29, 23, 18]
+// Data.dayWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
+// Data.nightWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
+
+// 设置星期排序数组
+convertWeekList()
+function convertWeekList(weeklist) {
+	var weeklist = ['周日','周一', '周二', '周三', '周四', '周五', '周六']
+	var date = new Date()
+	var nowWeek = date.getDay()
+	var arr_1 = weeklist.slice(0,nowWeek)
+	var arr_2 = weeklist.slice(nowWeek)
+	Data.WeekList = arr_2.concat(arr_1) 
+}
 // canvas
-// $(document).ajaxSuccess(function() {
+$(document).ajaxSuccess(function() {
 // tempertature line
 var templine = $('#templine')[0];
 console.log(typeof templine)
@@ -63,24 +70,14 @@ if (templine.getContext) {
     var ctx = templine.getContext('2d')
     console.log(ctx)
     ctx.strokeStyle = '#eee'
-    ctx.beginPath()
     drawUpperLine(intervalWidth, Data.maxTempList)
-    // ctx.closePath()
-    ctx.stroke()
 
-    ctx.beginPath()
     drawUnderLine(intervalWidth, Data.minTempList)
-    ctx.stroke()
 
-    ctx.beginPath()
     darwUpperDots(intervalWidth, Data.maxTempList)
-    ctx.fill()
 
-    ctx.beginPath()
     drawUnderDots (intervalWidth, Data.minTempList)
-    ctx.fill()
 
-    ctx.beginPath()
     drawWeatherText (intervalWidth, Data.dayWeatherList, Data.WeekList)
     // ctx.fill()
         // ctx.closePath()
@@ -88,7 +85,7 @@ if (templine.getContext) {
 
 function drawUpperLine(width, data) {
     var temp = 40
-    console.log(data)
+    ctx.beginPath()
     ctx.moveTo(40, data[0] * 4)
     for (var g = 0; g < data.length; g++) {
         ctx.lineTo(temp, data[g] * 4)
@@ -98,11 +95,12 @@ function drawUpperLine(width, data) {
         ctx.fillText(data[g], temp, data[g] * 4 - 15)
         temp += width
     }
+    ctx.stroke()
 }
 
 function drawUnderLine(width, data) {
     var temp = 40
-    console.log(data)
+    ctx.beginPath()
     ctx.moveTo(40, data[0] * 4 + 100)
     for (var g = 0; g < data.length; g++) {
         ctx.lineTo(temp, data[g] * 4 + 100)
@@ -112,23 +110,28 @@ function drawUnderLine(width, data) {
         ctx.fillText(data[g], temp, data[g] * 4 + 25 + 100)
         temp += width
     }
+    ctx.stroke()
 }
 
 function darwUpperDots(width, data) {
 	var temp = 40
+	ctx.beginPath()
 	for(var k=0; k<data.length; k++) {
 		ctx.moveTo(temp, data[k]*4)
 		ctx.arc(temp, data[k]*4, 5, 0, 2 * Math.PI)
 		temp+= width
 	}
+	ctx.fill()
 }
 function drawUnderDots (width, data) {
 	var temp = 40
+	ctx.beginPath()
 	for(var k=0; k<data.length; k++) {
 		ctx.moveTo(temp, data[k]*4+100)
 		ctx.arc(temp, data[k]*4+100, 5, 0, 2 * Math.PI)
 		temp+= width
 	}
+	ctx.fill()
 }
 
 function drawWeatherText (width, dataWeather, dataWeek) {
@@ -136,6 +139,7 @@ function drawWeatherText (width, dataWeather, dataWeek) {
 	ctx.fillStyle = '#fff'
     ctx.font = '16px 华文细黑'
     ctx.textAlign = "center"
+    ctx.beginPath()
 	for(var d=0; d<dataWeather.length; d++) {
 		// ctx.moveTo(temp, 350)
 		ctx.fillText(dataWeather[d], temp, 300)
@@ -145,15 +149,9 @@ function drawWeatherText (width, dataWeather, dataWeek) {
 	
 }
 
-function convertWeekList(weeklist) {
-	var date = new Date()
-	var nowWeek = date.getDay()
-	var arr_1 = weeklist.slice(0,nowWeek)
-	var arr_2 = weeklist.slice(nowWeek)
-	Data.WeekList = arr_2.concat(arr_1) 
-}
 
-// })
+
+})
 
 // disable right-click menu
 // $(document).bind('contextmenu', function() {
