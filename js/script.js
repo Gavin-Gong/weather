@@ -80,8 +80,7 @@ if (templine.getContext) {
     drawUnderDots (intervalWidth, Data.minTempList)
 
     drawWeatherText (intervalWidth, Data.dayWeatherList, Data.WeekList)
-    // ctx.fill()
-        // ctx.closePath()
+
 }
 
 function drawUpperLine(width, data) {
