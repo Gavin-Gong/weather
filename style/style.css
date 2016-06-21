@@ -129,8 +129,8 @@ font-feature-settings: 'liga';
 	background: #333;
 }
 .temperature {
-	position: relative;
-	right: -32px;
+	/*position: relative;*/
+	/*right: -32px;*/
 	display: inline-block;
 	margin-top: 8rem; 
 	font-weight: normal;
