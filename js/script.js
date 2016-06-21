@@ -72,7 +72,7 @@ var templine = $('#templine')[0];
 console.log(typeof templine)
 if (templine.getContext) {
     templine.width = window.innerWidth
-    templine.height = 700
+    templine.height = 400
     var intervalWidth = Math.floor((templine.width-80) / 6) // 点与点之间的距离
     var ctx = templine.getContext('2d')
     console.log(ctx)
@@ -89,11 +89,6 @@ if (templine.getContext) {
     drawWeatherText (intervalWidth, Data.dayWeatherList, Data.WeekList)
 
     drawWeatherIcon(intervalWidth, Data.dayWeatherCodes)
-	// var weathericon = new Image()
-	// weathericon.src = 'http://www.heweather.com/weather/images/icon/300.png'
-	// weathericon.onload = function() {
-	// 	ctx.drawImage(weathericon, 15, 380-40,50,50)
-	// }
 
 }
 
@@ -153,12 +148,12 @@ function drawWeatherText (width, dataWeather, dataWeek) {
 	var temp = 40
 
 	ctx.fillStyle = '#fff'
-    ctx.font = '16px 华文细黑'
+    ctx.font = '14px 华文细黑'
     ctx.textAlign = "center"
     ctx.beginPath()
 	for(var d=0; d<dataWeather.length; d++) {
 		ctx.fillText(dataWeek[d], temp, 300)
-        ctx.fillText(dataWeather[d], temp, 335)
+        ctx.fillText(dataWeather[d], temp, 330)
 		temp+=width
 	}
 }

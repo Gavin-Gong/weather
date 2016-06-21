@@ -71,20 +71,21 @@ font-feature-settings: 'liga';
 	display: none;
 	clear: both;
 }
+.container {
+	background: #333;
+}
 /*header */
 .header {
 	position: fixed;
-	top: 0;
+	top: 20px;
 	overflow: hidden;
 	width: 100vw;
-	vertical-align: middle;
 	padding-top: .8rem;
 	padding-bottom: .8rem;
 	box-sizing: border-box;
 	text-align: center;
-	font-size: 0;
-	color: #fff;
-	background: #f44336;
+	/*color: #fff;*/
+	/*background: rgba(255,255,255, .1);*/
 	
 }
 .drawer-btn {
@@ -99,20 +100,21 @@ font-feature-settings: 'liga';
 	left: 50%;
 	display: inline-block;
 	max-width: 50%;
-	padding: .5rem 1rem;
+	padding: .3rem 1rem;
 	text-align: center;
 	border: none;
 	outline: none;
 	font-size: 2rem;
+	color: #fff;
 	border-radius: 2rem;
-	background: #eee;
-	opacity: .4;
+	background: rgba(255,255,255, .1);
+	/*opacity: .1;*/
 	transform: translate(-50%, -50%);
 }
 .search-bar:focus {
 	text-align: left;
 	outline: none;
-	opacity: 1
+	background-color: rgba(0,0,0, .3);
 }
 .more-btn {
 	float: right;
