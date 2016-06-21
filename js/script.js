@@ -1,13 +1,15 @@
 // get and store data by ajax
 var Data = {}
 var apiURL = 'http://apis.baidu.com/heweather/weather/free?city='
-$('.search-bar').bind('change', function() {
+// var apiURL = 'https://api.heweather.com/x3/weather?cityid='
+$('.search-bar').bind('focus', function() {
     $.ajax({
         type: "GET",
         dataType: 'json',
         url: apiURL + $('.search-bar').val(),
         beforeSend: function(request) {
             request.setRequestHeader('apikey', '90fd79ea108aea2f4429dece83ac9192');
+            // request.setRequestHeader('apikey', '9ae75ecde7f146cca2a5c1653aed41c7');
         },
         success: function(request) {
             var responseData = request['HeWeather data service 3.0'][0]
@@ -24,25 +26,30 @@ $('.search-bar').bind('change', function() {
                 var minTempList = []
                 var dayWeatherList = []
                 var nightWeatherList = []
-
+                var dayWeatherCodes = []
+                var nightWeatherCodes = []
                 // format data as need
                 for (var i = 0; i < dailyForecast.length; i++) {
                     maxTempList.push(dailyForecast[i].tmp.max)
                     minTempList.push(dailyForecast[i].tmp.min)
                     dayWeatherList.push(dailyForecast[i].cond.txt_d)
+                    dayWeatherCodes.push(dailyForecast[i].cond.code_d)
                     nightWeatherList.push(dailyForecast[i].cond.txt_n)
+                    nightWeatherCodes.push(dailyForecast[i].cond.code_n)
                 }
                 Data.maxTempList = maxTempList
                 Data.minTempList = minTempList
                 Data.dayWeatherList = dayWeatherList
                 Data.nightWeatherList = nightWeatherList
+                Data.nightWeatherCodes = nightWeatherCodes
+                Data.dayWeatherCodes = dayWeatherCodes
                 console.log(Data)
             }
         }
     })
 })
-// $('.search-bar').trigger('focus')
-    // 
+$('.search-bar').trigger('focus')
+    
 // Data.maxTempList = [23, 45, 12, 35, 29, 33, 8]
 // Data.minTempList = [29, 35, 22, 15, 29, 23, 18]
 // Data.dayWeatherList = ['cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud', 'cloud']
@@ -80,6 +87,13 @@ if (templine.getContext) {
     drawUnderDots (intervalWidth, Data.minTempList)
 
     drawWeatherText (intervalWidth, Data.dayWeatherList, Data.WeekList)
+
+    drawWeatherIcon(intervalWidth, Data.dayWeatherCodes)
+	// var weathericon = new Image()
+	// weathericon.src = 'http://www.heweather.com/weather/images/icon/300.png'
+	// weathericon.onload = function() {
+	// 	ctx.drawImage(weathericon, 15, 380-40,50,50)
+	// }
 
 }
 
@@ -123,6 +137,7 @@ function darwUpperDots(width, data) {
 	}
 	ctx.fill()
 }
+
 function drawUnderDots (width, data) {
 	var temp = 40
 	ctx.beginPath()
@@ -136,6 +151,7 @@ function drawUnderDots (width, data) {
 
 function drawWeatherText (width, dataWeather, dataWeek) {
 	var temp = 40
+
 	ctx.fillStyle = '#fff'
     ctx.font = '16px 华文细黑'
     ctx.textAlign = "center"
@@ -146,10 +162,22 @@ function drawWeatherText (width, dataWeather, dataWeek) {
 		ctx.fillText(dataWeek[d], temp, 330)
 		temp+=width
 	}
-	
 }
 
-
+function drawWeatherIcon(width, IconCodes) {
+    var temp = 40
+	var baseIconUrl = 'http://www.heweather.com/weather/images/icon/' //加载天气IOCN
+	var imagesObjectArr = new Array()
+	for(var p = 0; p < IconCodes.length; p++) {
+		imagesObjectArr[p] = new Image()
+		imagesObjectArr[p].src = baseIconUrl + IconCodes[p] + '.png'
+		imagesObjectArr[p].onload = (function () {
+            console.log(imagesObjectArr[p])
+			ctx.drawImage(imagesObjectArr[p], temp-25, 380-40, 50, 50)
+		})()
+        temp += width
+	}
+}
 
 })
 
