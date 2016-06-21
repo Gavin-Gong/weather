@@ -42,7 +42,7 @@ $('.search-bar').bind('focus', function() {
                 var nightWeatherList = []
                 var dayWeatherCodes = []
                 var nightWeatherCodes = []
-                var air = aqi.city.aqi + '|' + aqi.city.qlty
+                var air = aqi.city.aqi + ' | ' + aqi.city.qlty
                 var nowTemp = now.tmp
                 var nowWeather = now.cond.txt
                     // format data as need
@@ -85,6 +85,7 @@ function drawWeatherCanvas(canvasId, Data) {
     var STARTx = 40
 
     var templine = document.getElementById('templine')
+    templine.style.width = window.innerWidth + 'px'
     templine.width = window.innerWidth
     templine.height = 500
     var intervalWidth = Math.floor((templine.width - 2 * STARTx) / 6) // 点与点之间的距离
@@ -179,7 +180,7 @@ function drawWeatherCanvas(canvasId, Data) {
     }
 
     function drawWeatherIcon(IconCodes) {
-        var temp = STARTx + 10
+        var temp = STARTx - 20
         var baseIconUrl = 'http://www.heweather.com/weather/images/icon/' //加载天气IOCN
         var imagesObjectArr = new Array()
         for (var p = 0; p < IconCodes.length; p++) {
@@ -188,9 +189,9 @@ function drawWeatherCanvas(canvasId, Data) {
             imagesObjectArr[p].onload = (function() {
                 console.log(imagesObjectArr[p])
                 // ctx.drawImage(imagesObjectArr[p], temp * 4 - 110, 1130, 100, 100)
-                ctx.drawImage(imagesObjectArr[p], temp, 1130, 100, 100)
+                ctx.drawImage(imagesObjectArr[p], temp, 340, 40, 40)
             })()
-            temp += (intervalWidth + 145)
+            temp += intervalWidth
         }
     }
 }
