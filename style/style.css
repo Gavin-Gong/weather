@@ -76,7 +76,6 @@ font-feature-settings: 'liga';
 }
 /*header */
 .header {
-	position: fixed;
 	top: 20px;
 	overflow: hidden;
 	width: 100vw;
@@ -96,7 +95,7 @@ font-feature-settings: 'liga';
 }
 .search-bar {
 	position: absolute;
-	top: 50%;
+	top: 3rem;
 	left: 50%;
 	display: inline-block;
 	max-width: 50%;
@@ -130,6 +129,9 @@ font-feature-settings: 'liga';
 	background: #333;
 }
 .temperature {
+	position: relative;
+	right: -32px;
+	display: inline-block;
 	margin-top: 8rem; 
 	font-weight: normal;
 	font-size: 8rem;
