@@ -104,7 +104,7 @@ function drawUpperLine(width, data) {
     for (var g = 0; g < data.length; g++) {
         ctx.lineTo(temp, data[g] * 4)
         ctx.fillStyle = '#fff'
-        ctx.font = 'bold 16px Arial'
+        ctx.font = '14px'
         ctx.textAlign = "center"
         ctx.fillText(data[g], temp, data[g] * 4 - 15)
         temp += width
@@ -119,7 +119,7 @@ function drawUnderLine(width, data) {
     for (var g = 0; g < data.length; g++) {
         ctx.lineTo(temp, data[g] * 4 + 100)
         ctx.fillStyle = '#fff'
-        ctx.font = '16px Arial'
+        ctx.font = '14px'
         ctx.textAlign = "center"
         ctx.fillText(data[g], temp, data[g] * 4 + 25 + 100)
         temp += width
@@ -157,15 +157,14 @@ function drawWeatherText (width, dataWeather, dataWeek) {
     ctx.textAlign = "center"
     ctx.beginPath()
 	for(var d=0; d<dataWeather.length; d++) {
-		// ctx.moveTo(temp, 350)
-		ctx.fillText(dataWeather[d], temp, 300)
-		ctx.fillText(dataWeek[d], temp, 330)
+		ctx.fillText(dataWeek[d], temp, 300)
+        ctx.fillText(dataWeather[d], temp, 335)
 		temp+=width
 	}
 }
 
 function drawWeatherIcon(width, IconCodes) {
-    var temp = 40
+    var temp = 50
 	var baseIconUrl = 'http://www.heweather.com/weather/images/icon/' //加载天气IOCN
 	var imagesObjectArr = new Array()
 	for(var p = 0; p < IconCodes.length; p++) {
@@ -173,9 +172,9 @@ function drawWeatherIcon(width, IconCodes) {
 		imagesObjectArr[p].src = baseIconUrl + IconCodes[p] + '.png'
 		imagesObjectArr[p].onload = (function () {
             console.log(imagesObjectArr[p])
-			ctx.drawImage(imagesObjectArr[p], temp-25, 380-40, 50, 50)
+			ctx.drawImage(imagesObjectArr[p], temp*4 - 120, 1130, 100, 100)
 		})()
-        temp += width
+        temp += (width - 10)
 	}
 }
 
